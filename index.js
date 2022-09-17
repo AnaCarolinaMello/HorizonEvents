@@ -16,6 +16,8 @@ const fs = require('fs')
 const bcrypt = require('bcryptjs')
 const passport = require('passport')
 require("./config/auth")(passport)
+const multer = require('multer');
+require('dotenv/config');
 
 app.use("/",route)
 
@@ -58,6 +60,16 @@ mongoose.connect("mongodb://127.0.0.1:27017/horizonEvents").then(()=>{
 }).catch((err)=>{
     console.log("Erro ao se conectar"+err)
 })
+
+var storage = multer.diskStorage({
+    destination: (req,res,cb)=>{
+        cb(null,'uploads')
+    },
+    filename: (req,res,cd)=>{
+        cd(null,file.fieldname)
+    }
+})
+var upload = multer({storage: storage})
 
 app.listen(port, err =>{
     console.log(`http://localhost:${port}`)
@@ -172,63 +184,51 @@ app.post("/userPerfil", async (req,res)=>{
     }
 })
 
-//Rota para se o usuário tentar entrar direto na área de usuários
-app.get("/userPerfil", (req,res)=>{
-
-    var erros = []
-
-    erros.push({texto: "Cadastre seu usuário antes de avançar"})
-
-    if(erros.length > 0){
-        res.render("user/cadastrousuario",{
-            title: "Cadastro",
-            style: "cadastrousuario.css",
-            erros: erros
-        })
+//Tentativa de dar um upload em imagens no banco de dados
+app.post("/upload/:id", upload.single('image'), async(req,res)=>{
+    var email = req.body.email
+    console.log(email)
+    let usuario = await User_Cliente.find({email:email})
+    if(!usuario == []){
+        erros.push({texto:"Essa conta não existe"})
+        res.redirect("/userLogin")
+    }else{
+        let imgUpload ={
+            fotoPerfil: {
+                data: fs.readFileSync(path.join(__dirname + '/uploads/' + "fotoPerfil")),
+                contentType: 'image/png'
+            }
+        }
     }
 })
 
-//Tentativa de dar um upload em imagens no banco de dados
-app.post("/upload", (req,res)=>{
-
-    var form = new formidable.IncomingForm();
-    form.parse(req,(err,fields, files)=>{
-
-        let img = files.foto;
-        fs.readFile(img.path , (err,data)=>{
-            
-            User_Cliente.create({
-                foto_Perfil: data
-            },
-            console.log("Foto salva com sucesso"),
-            (err, user)=>{
-                if(err){
-                    console.log("Erro ao salvar imagem "+err)
-                    res.redirect("user/areaDoUsuario",{
-                        style: "areaDoUsuario.css"
-                    })
-                }
-                if(user){
-                    res.redirect("user/areaDoUsuario",{
-                        style: "areaDoUsuario.css",
-                        fotoPerfil: data
-                    })
-                }
-            }
-            )
-        })
-    })
-})
-
-app.post("/userLogin", (req,res,next)=>{
-    res.redirect('/userLoginPerfil')
-})
-
 //Rota de autentificação do login
-app.post("/userLoginPerfil", (req,res,next)=>{
-    passport.authenticate("local",{
-        successRedirect: '/userPerfil',
-        failureRedirect: '/userLogin',
-        failureFlash: true
-    })(req,res,next)
+app.post("/userLoginPerfil", async(req,res,next)=>{
+    var erros = []
+    var email = req.body.email
+    console.log(email)
+    let usuario = await User_Cliente.find({email:email})
+    if(!usuario == []){
+        erros.push({texto:"Essa conta não existe"})
+        res.redirect("/userLogin")
+    }else{
+        bcrypt.compare(req.body.senha, usuario[0].senha, (erro, batem)=>{
+            if(batem){
+                res.render("user/areaDoUsuario",{
+                    title: usuario[0].nome,
+                    style: "areaDoUsuario.css",
+                    email: req.body.email,
+                    usuario: usuario[0].user_name
+                })
+            }else{
+                erros.push({texto:"Senha incorreta"})
+                res.render("user/loginUsuario",{
+                    title: "Entrar",
+                    style: "loginUsuario.css",
+                    erros: erros
+                })
+            }
+        })
+    }
+
 })
