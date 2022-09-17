@@ -1,5 +1,6 @@
 ﻿# Horizon-of-events
 
+<h3>Dependências que devem ser baixadas para rodar o projeto</h3>
 bcryptjs@2.4.3<br>
 body-parser@1.20.0<br>
 bootstrap@5.2.1<br>
