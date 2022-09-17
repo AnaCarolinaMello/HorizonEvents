@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="../public/style/cadastroEmpresa.css" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+    <div id="container">
+        <form action="" method="post" id="cadastro">
+            <h2>Cadastre-se</h2>
+            <label for="nomeFantasia">Nome fantasia:</label>
+            <input type="text" name="nomeFantasia" id="" required>
+            <label for="razaoSocial">Razão social:</label>
+            <input type="text" name="razaoSocial" id="" required>
+            <label for="CNPJ">CNPJ:</label>
+            <input type="number" name="CNPJ" id="" required>
+            <label for="representante">Representante</label>
+            <input type="text" name="representante" id="" required>
+            <div id="endereco">
+                <label for="rua" class="labelEndereco">Rua:</label>
+                <input type="text" name="rua" class="enderecoInput" id="" required>
+                <label for="numero" class="labelEndereco" id="lblNumero">Número:</label>
+                <input type="number" name="numero" class="enderecoInput"  id="numero" required>
+                <label for="CEP" class="labelEndereco">CEP:</label>
+                <input type="number" name="cep" class="enderecoInput" id="" required>
+            </div>
+            <label for="password">Senha:</label>
+            <input type="password" name="password" min="8" max="32">
+            <label for="passwordConfirm">Confirme a senha:</label>
+            <input type="password" name="passwordConfirm" id="" min="8" max="32">
+            <input type="submit" id="confirm">
+        </form>
+        <div id="login">
+            <p>Já é cadastrado?<a href="#"> Faça login</a></p>
+        </div>
+    </div>
+</body>
+</html>
