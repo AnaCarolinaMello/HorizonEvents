@@ -208,7 +208,7 @@ app.post("/userLoginPerfil", async(req,res,next)=>{
     var email = req.body.email
     console.log(email)
     let usuario = await User_Cliente.find({email:email})
-    if(!usuario == []){
+    if(usuario == []){
         erros.push({texto:"Essa conta não existe"})
         res.redirect("/userLogin")
     }else{
