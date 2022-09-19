@@ -19,8 +19,10 @@ const User = new Schema({
         required: false
     },
     foto_Perfil:{
+        name: String,
         data: Buffer,
         contentType: String,
+        url: String,
         required: false
     },
     senha:{
