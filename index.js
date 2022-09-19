@@ -18,6 +18,7 @@ const passport = require('passport')
 require("./config/auth")(passport)
 const multer = require('multer');
 require('dotenv/config');
+const localStorage = require('localStorage')
 
 app.use("/",route)
 
@@ -62,11 +63,11 @@ mongoose.connect("mongodb://127.0.0.1:27017/horizonEvents").then(()=>{
 })
 
 var storage = multer.diskStorage({
-    destination: (req,res,cb)=>{
-        cb(null,'uploads')
+    destination: (req,file,cb)=>{
+        cb(null,path.join(__dirname, '/public/img/'))
     },
-    filename: (req,res,cd)=>{
-        cd(null,file.fieldname)
+    filename: (req,file,cd)=>{
+        cd(null,file.originalname)
     }
 })
 var upload = multer({storage: storage})
@@ -79,6 +80,12 @@ app.listen(port, err =>{
 require("./models/User")
 //Passando para uma variável o modelo da collection
 const User_Cliente = mongoose.model("Usuario_Cliente")
+
+var nomeExibir
+var idExibir
+var emailExbir
+var user_nameExibir
+var imagemExibir
 
 app.post("/userPerfil", async (req,res)=>{
 
@@ -138,9 +145,9 @@ app.post("/userPerfil", async (req,res)=>{
         let email = req.body.email
         let user_name = req.body.username
         //Verificando se já existe o email e username passados já existem no banco de dados  
-        let conferirUser = User_Cliente.findOne({ "$or": [ { email: email }, { user_name: user_name} ] });
+        let conferirUser = await User_Cliente.find({ "$or": [ { email: email }, { user_name: user_name} ] });
         //Código se existirem
-        if(conferirUser == true){
+        if(!conferirUser == []){
             erros.push({texto:"Emai ou nome de usuário já existentes"})
             console.log("Emai ou nome de usuário já existentes")
             res.render("user/cadastrousuario",{
@@ -160,14 +167,19 @@ app.post("/userPerfil", async (req,res)=>{
                 senha: bcrypt.hashSync(senha, salt)
             }
             //Criando novo usuário
-            new User_Cliente(novoUserCliente).save().then(()=>{
+            new User_Cliente(novoUserCliente).save().then((user)=>{
                 console.log("Novo usuário adicionado")
                 req.flash("success_mgs","Usuário cadastrado com sucesso")
+                nomeExibir = user.nome
+                idExibir = user._id
+                emailExbir = user.email
+                user_nameExibir = user.user_name
                 res.render("user/areaDoUsuario",{
-                    title: req.body.nome,
+                    title: req.body.username,
                     style: "areaDoUsuario.css",
                     email: req.body.email,
-                    usuario: req.body.username
+                    usuario: req.body.username,
+                    _id: user._id 
                 })
             }).catch((err)=>{
                 req.flash("erro_mgs","Erro ao cadastrar usuário, tente novamente mais tarde")
@@ -185,40 +197,72 @@ app.post("/userPerfil", async (req,res)=>{
 })
 
 //Tentativa de dar um upload em imagens no banco de dados
-app.post("/upload/:id", upload.single('image'), async(req,res)=>{
-    var email = req.body.email
-    console.log(email)
-    let usuario = await User_Cliente.find({email:email})
-    if(!usuario == []){
-        erros.push({texto:"Essa conta não existe"})
-        res.redirect("/userLogin")
-    }else{
-        let imgUpload ={
-            fotoPerfil: {
-                data: fs.readFileSync(path.join(__dirname + '/uploads/' + "fotoPerfil")),
-                contentType: 'image/png'
-            }
+app.post("/upload/:id", upload.single('foto'), async(req,res,result)=>{
+    var id = req.params.id
+    idExibir = req.params.id
+    await User_Cliente.findById({_id:id}).then((user)=>{
+        if(user == []){
+            console.log("Erro ao salvar imagem")
+            res.redirect("/userPerfilImagem")
+        }else{
+            // var img = fs.readFileSync(req.file.path);
+            var encode_img = req.file.filename.toString('base64');
+            user.foto_Perfil.name = encode_img
+            user.foto_Perfil.contentType = req.file.mimetype
+            user.foto_Perfil.data = fs.readFileSync(path.join(__dirname + '/public/img/' + encode_img))
+            user.foto_Perfil.url = `/img/${req.file.originalname}`
+            imagemExibir = `/img/${req.file.originalname}`
+            nomeExibir = user.nome
+            idExibir = user._id
+            emailExbir = user.email
+            user_nameExibir = user.user_name
+            user.save().then(()=>{
+                console.log("Imagem salva com sucesso")
+                res.redirect("/userPerfilImagem")
+            }).catch((err)=>{
+                console.log("Erro ao salvar imagem "+err)
+                res.redirect("/userPerfilImagem")
+            })
         }
-    }
+    }).catch((err)=>{
+        console.log("Erro ao salvar imagem "+err)
+        res.redirect("/userPerfilImagem")
+    })
+})
+
+app.get("/userPerfilImagem", async (req,res)=>{
+    res.render("user/areaDoUsuario",{
+        title: user_nameExibir,
+        style: "areaDoUsuario.css",
+        email: emailExbir,
+        usuario: user_nameExibir,
+        _id: idExibir,
+        fotoPerfil: imagemExibir
+    })
 })
 
 //Rota de autentificação do login
 app.post("/userLoginPerfil", async(req,res,next)=>{
     var erros = []
     var email = req.body.email
-    console.log(email)
     let usuario = await User_Cliente.find({email:email})
+    
     if(usuario == []){
         erros.push({texto:"Essa conta não existe"})
         res.redirect("/userLogin")
     }else{
         bcrypt.compare(req.body.senha, usuario[0].senha, (erro, batem)=>{
             if(batem){
+                nomeExibir = usuario[0].nome
+                idExibir = usuario[0]._id
+                emailExbir = usuario[0].email
+                user_nameExibir = usuario[0].user_name
                 res.render("user/areaDoUsuario",{
-                    title: usuario[0].nome,
+                    title: usuario[0].user_name,
                     style: "areaDoUsuario.css",
                     email: req.body.email,
-                    usuario: usuario[0].user_name
+                    usuario: usuario[0].user_name,
+                    _id: usuario[0]._id 
                 })
             }else{
                 erros.push({texto:"Senha incorreta"})
