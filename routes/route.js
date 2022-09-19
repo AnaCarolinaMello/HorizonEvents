@@ -14,7 +14,8 @@ route.get("/",  (req, res) => {
 route.get("/userSignup", (req,res)=>{
     res.render("user/cadastroUsuario",{
         title: "Cadastro",
-        style: "cadastroUsuario.css"
+        style: "cadastroUsuario.css",
+        script: "cadastroUsuario.js"
     })
 })
 
@@ -25,8 +26,11 @@ route.get("/userLogin", (req,res)=>{
     })
 })
 
-route.get("/user/cadastroUsuario", (req,res)=>{
-    res.redirect("/userLogin")
+route.post("/userLogin", (req,res)=>{
+    res.render("user/loginUsuario",{
+        title: "Entrar",
+        style: "loginUsuario.css"
+    })
 })
 
 route.get("/user/cadastroUsuario", (req,res)=>{
@@ -36,6 +40,25 @@ route.get("/user/cadastroUsuario", (req,res)=>{
 route.get("/logout",(req,res)=>{
     req.logout();
     res.redirect("/userSignup")
+})
+
+//Rota para se o usuário tentar entrar direto na área de usuários
+route.get("/userPerfil", (req,res)=>{
+
+    res.redirect("/userSignup")
+})
+
+route.get("/userLoginPerfil", (req,res)=>{
+
+    res.redirect("/userLogin")
+})
+
+route.get("/userEdit/:id", (req,res)=>{
+
+    res.render("user/editarUsuario",{
+        title: "Editar usuário",
+        style: "editarUsuario.css"
+    })
 })
 
 module.exports = route
