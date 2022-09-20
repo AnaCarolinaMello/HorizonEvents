@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300&display=swap');
+
+body{
+    height: 100vh;
+    background: linear-gradient(to bottom right, #e7e6e6 4%, #c5c5c5 37%, #999999 100%);  
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+#container{
+    position: absolute;
+    height: auto;
+    width: 70%;
+    margin: 100px;
+    background-color: white;
+    display: grid;
+    grid-template-columns: 2fr 3fr 1fr;
+    border-radius: 6px;
+}
+
+#fotoDePerfil{
+    position: relative;
+    width: 150px;
+    height: 150px;
+    border-radius: 100%;
+    border: 1px solid black;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%,-50%);
+}
+
+#containerFoto{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+#dados{
+    display: grid;
+    font-family: 'Source Sans Pro', sans-serif;
+    position: relative;
+    align-self: center;
+    gap: 60%;
+    margin-left: 10%;
+    top: -20px;
+}
+
+#edit{
+    position: relative;
+    border: none;
+    background: none;
+    border-radius: 6px;
+    padding: 3px 5px 3px 5px;
+    top: 15%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+/* alterações */
+#editIcon{
+    font-size: 1.5em;
+}
+
+#foto{
+    position: relative;
+    display: grid;
+    grid-template-rows: 2fr;
+    gap: 5px;
+}
+
+#icon{
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    font-size: 6em;
+}
+
+#imagem{
+    position: relative;
+    width: 150px;
+    height: 150px;
+    border-radius: 100%;
+    border: 1px solid black;
+    top: 50%;
+    left: 36%;
+    transform: translate(-50%,-50%);
+    margin-top: 5px;
+}
+
+#submit{
+    display: flex;
+    flex-direction: column;
+}
+
+#confirmarIMG{
+    position: relative;
+    width: 40%;
+    left: 10px;
+}

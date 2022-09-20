@@ -1,0 +1,23 @@
+{{#each erros}}
+    <div class="alert alert-danger"><p>{{texto}}</p></div>
+{{else}}
+
+{{/each}}
+<div id="container">
+    <form action="/userEdited" method="post" id="cadastro">
+        <h2>Edição de usuário</h2>
+        <p id="txtHorizon">Para modificar sua senha, você deve digitar a antiga antes</p>
+        <input id="nome" type="text" placeholder="Nome completo" required name="nome" value = {{nome}} autocomplete="off" autocapitalize="off" autocorrect="off" >
+        <input id = "username" type="text" placeholder="Nome de usuário" required name="username" value = {{user_name}} autocomplete="off" autocapitalize="off" autocorrect="off" >
+        <input id = "email" type="text" placeholder="Email" required name="email" value = {{email}} autocomplete="off" autocapitalize="off" autocorrect="off" >
+        <input id = "telefone" type="tel" placeholder="Telefone" name="telefone" autocomplete="off" autocapitalize="off" autocorrect="off" value = {{telefone}}>
+        <input id="senha" type="password" min="8" max="32" placeholder="Antiga senha" name="senha_ant" value = {{erro}}>
+        <input id="senha" type="password" min="8" max="32" placeholder="Nova senha" name="senha" value = {{erro}}>
+        <input id="confirme_senha" type="password" min="8" max="32"placeholder="Confirme sua nova senha" name="confirme_senha" value = {{erro}}>
+        <div>
+            <input type="checkbox" id="showPassword">
+            <label>Mostrar senha</label>
+        </div>
+        <input type="submit" id="confirm">
+    </form>
+</div>

@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300&family=Titillium+Web:wght@300&display=swap');
+
+@media only screen and (max-width: 600px) {
+    #cadastro{
+
+    }
+    #confirm{
+        width: 40%;
+    }
+    /* h2{
+        font-size: 1em;
+    }
+    #txtHorizon{
+        font-size: 10px; */
+    /* } */
+
+  }
+
+  @media only screen and (min-width: 70%){
+
+  }
+
+
+
+body{
+    height: 100vh;
+    background: linear-gradient(to bottom right, #e7e6e6 4%, #c5c5c5 37%, #999999 100%);
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+#container{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: fit-content;
+    margin: 20px;
+}
+
+#cadastro{
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    min-width: 65%;
+    max-width: 20%;
+    border: 1px solid black;
+    border-radius: 6px;
+    padding: 20px;
+    background-color: rgb(255, 255, 255);
+}
+
+#login{
+    width: 20%;
+    min-width:65%;
+    max-width: 20%;
+    padding: 0 20px 0 20px;
+    border: 1px solid black;
+    border-radius: 6px;
+    margin-top: 5px;
+    background-color: white;
+}
+
+#confirm{
+    margin-top: 10px;
+    width: 70%;
+    padding: 8px 0px 8px 0px;
+    border-radius: 6px;
+    font-size: 1em;
+    align-self: center;
+    background-color: #50aaff;
+    color: white;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+#confirm:hover{
+    background-color: #499be7;
+    transform: scale(1.1);
+}
+
+.required:after{
+    position: relative;
+    display: flex;
+    margin-right: 10px;
+    content:"*";
+    color: red;
+    justify-content: end;
+}
+
+
+
+input{
+    border: 1px solid lightgray;
+    border-radius: 3px;
+    padding: 9px 8px 7px;
+    margin-bottom: 10px;
+}
+
+p:not(#txtHorizon){
+    text-align: center;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: bold;
+}
+
+a{
+    text-decoration: none;
+    color: blue;
+}
+
+a:visited{
+    color: blue;
+}
+
+h2{
+    text-align: center;
+    color: #2D74CC;
+    font-size: 1.9em;
+    margin-bottom: 10px;
+}
+
+#txtHorizon{
+    text-align: center;
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 1.2em;
+}

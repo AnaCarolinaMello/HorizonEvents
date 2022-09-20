@@ -1,0 +1,43 @@
+{{#each erros}}
+    <div class="alert alert-danger"><p>{{texto}}</p></div>
+{{else}}
+
+{{/each}}
+     {{!-- <header>
+        <div id="navbar">
+            <div id="logo">
+                <img src="" alt="" srcset="">
+            </div>
+            <div id="pages">
+                <a href="">Home</a>
+                <a href=""></a>
+            </div>
+            <div id="inout">
+
+            </div>
+        </div>
+    </header> --}}
+    <main>
+        <div id="container">
+            <div id="foto">
+                <img src={{fotoPerfil}} id="imagem">
+                <div id="submit">
+                <form action="/upload/{{_id}}" method="post" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <input class="form-control-sm" id="formFileSm" type="file" name="foto" accept="image/*">
+                    </div>
+                    <input type="submit" value="Salvar imagem" id="confirmarIMG">
+                    </form>
+                </div>
+                <div>
+                </div>
+            </div>
+            <div id="dados">
+                <p id="username" name="username">Username: {{usuario}}</p>
+                <p id="email" name="email">Email: {{email}}</p>
+            </div>
+            <form action="/userEdited" method="get" id="editar">
+                <button id="edit"><i class='fas fa-edit'></i></button>
+            </form>
+        </div>
+    </main>
