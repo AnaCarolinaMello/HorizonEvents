@@ -53,12 +53,19 @@ route.get("/userLoginPerfil", (req,res)=>{
     res.redirect("/userLogin")
 })
 
-route.get("/userEdit/:id", (req,res)=>{
 
-    res.render("user/editarUsuario",{
-        title: "Editar usuário",
-        style: "editarUsuario.css"
-    })
-})
+// route.get("/userPerfilImagem/:id", async (req,res)=>{
+//     var id = req.params.id
+//     await User_Cliente.findById({_id:id}).then((user)=>{
+//         res.render("user/areaDoUsuario",{
+//             title: user.nome,
+//             style: "teste.css",
+//             email: user.email,
+//             usuario: user.user_name,
+//             _id: user._id
+//         })
+//     })
+// })
+
 
 module.exports = route
