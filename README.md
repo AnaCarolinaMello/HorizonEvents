@@ -13,3 +13,5 @@ node@18.9.0<br>
 nodemon@2.0.19<br>
 passport-local@1.0.0<br>
 passport@0.6.0<br>
+dotenv@16.0.2<br>
+multer@1.4.5-lts.1<br>
