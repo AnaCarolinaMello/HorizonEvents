@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300&family=Titillium+Web:wght@300&display=swap');
+
+
+
+
+body{
+    height: 100vh;
+    background: linear-gradient(to bottom right, #e7e6e6 4%, #c5c5c5 37%, #999999 100%);
+}
+
+#container{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: fit-content;
+
+}
+
+#cadastro{
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    min-width: 65%;
+    max-width: 20%;
+    border: 1px solid black;
+    border-radius: 6px;
+    padding: 20px;
+    background-color: rgb(255, 255, 255);
+    margin: 0 auto;
+}
+
+#login{
+    width: 20%;
+    min-width:65%;
+    max-width: 20%;
+    padding: 0 20px 0 20px;
+    border: 1px solid black;
+    border-radius: 6px;
+    margin-top: 5px;
+    background-color: white;
+    margin: auto;
+}
+
+#confirm{
+    margin-top: 10px;
+    width: 70%;
+    padding: 8px 0px 8px 0px;
+    border-radius: 6px;
+    font-size: 1em;
+    align-self: center;
+    background-color: #50aaff;
+    color: white;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+#confirm:hover{
+    background-color: #499be7;
+    transform: scale(1.1);
+}
+
+.required:after{
+    position: relative;
+    display: flex;
+    margin-right: 10px;
+    content:"*";
+    color: red;
+    justify-content: end;
+}
+
+
+
+input{
+    border: 1px solid lightgray;
+    border-radius: 3px;
+    padding: 9px 8px 7px;
+    margin-bottom: 10px;
+    border: none;
+    border-bottom: 1px solid black;
+}
+
+p:not(#txtHorizon){
+    text-align: center;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: bold;
+    margin: 0px;
+}
+
+a{
+    text-decoration: none;
+    color: blue;
+}
+
+a:visited{
+    color: blue;
+}
+
+h2{
+    text-align: center;
+    color: #2D74CC;
+    font-size: 1.9em;
+    margin-bottom: 10px;
+}
+
+#txtHorizon{
+    text-align: center;
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+.custom-shape-divider-bottom-1664404972 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1664404972 svg {
+    position: relative;
+    display: block;
+    width: calc(151% + 1.3px);
+    height: 304px;
+    transform: rotateY(180deg);
+}
+
+.custom-shape-divider-bottom-1664404972 .shape-fill {
+    fill: #4D6F8D;
+}
+
+@media only screen and (max-width: 600px) {
+
+    #container{
+        width: 100%;
+        margin-left: 10vh;
+    }
+
+  }
+
+  @media only screen and (min-width: 70%){
+
+  }

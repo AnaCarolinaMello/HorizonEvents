@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 const mysql = require("mysql");
 
@@ -44,4 +45,12 @@ exports.cadastroUser = async(req,res)=>{
     else{
         res.send(alert("Senhas inconpatíveis"))
     }
+=======
+
+const mysql = require("mysql");
+
+exports.cadastroUser = async(req,res)=>{
+    let name = req.body
+    console.log(name)
+>>>>>>> 4e72a74 (Ana)
 }

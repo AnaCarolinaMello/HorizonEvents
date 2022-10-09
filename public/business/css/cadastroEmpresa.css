@@ -1,0 +1,112 @@
+body{
+    height: 100vh;
+    background: linear-gradient(to bottom right, #e7e6e6 4%, #c5c5c5 37%, #999999 100%);
+
+}
+
+.custom-shape-divider-bottom-1664404972 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1664404972 svg {
+    position: relative;
+    display: block;
+    width: calc(151% + 1.3px);
+    height: 304px;
+    transform: rotateY(180deg);
+}
+
+.custom-shape-divider-bottom-1664404972 .shape-fill {
+    fill: #4D6F8D;
+}
+
+#container{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 70%;
+    margin: 20px;
+}
+
+#cadastro{
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    margin: 0 auto;
+    border: 1px solid black;
+    border-radius: 6px;
+    padding: 10px;
+    background-color: rgb(255, 255, 255);
+    margin-bottom: 1vh;
+}
+
+#login{
+    width: 70%;
+    border: 1px solid black;
+    padding: 10px 20px 10px 20px;
+    border-radius: 6px;
+    background-color: white;
+    margin: 0 auto;    
+}
+
+input{
+    border: none;
+    border-bottom: 1px solid black;
+    margin-bottom: 4vh;
+    /* width: 30%; */
+}
+
+
+#endereco input{
+    margin-right: 8%;
+}
+#numero{
+    width: 10%;
+}
+
+#nomeRua{
+    width: 45%;
+}
+
+#cep{
+    width: 15%;
+}
+
+#nomes input{
+    width: 45%;
+}
+
+#dados input{
+    width: 45%;
+}
+
+#confirm{
+    margin-top: 10px;
+    width: 50%;
+    padding: 8px 0px 8px 0px;
+    border-radius: 6px;
+    font-size: 1em;
+    align-self: center;
+    background-color: #50aaff;
+    color: white;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+#confirm:hover{
+    background-color: #499be7;
+    transform: scale(1.1);
+}
+
+#txtCadastro{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2vh;
+}

@@ -1,0 +1,84 @@
+#navbar{
+    justify-content: space-between;
+    width: 100%;
+    z-index: 1;
+}
+
+#footer{
+    width: 100%;
+    z-index: 1;  
+  }
+
+#container{
+    display: grid;
+    grid-template-columns:1fr 4fr 0.5fr ;
+    width: 85%;
+    height: 50vh;
+    background-color: lightblue;
+    position: absolute;
+    border: 5px solid black;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+#formImagem{
+    display: grid;
+    align-items: center;
+}
+
+#foto{
+    text-align: center;
+}
+
+#imagem{
+    width: 150px;
+    height: 150px;
+    border: 1px solid rgb(63, 63, 63);
+    border-radius: 100%;
+    margin: 2vh 0vh 1.4vh 2vh;
+}
+
+#confirmarIMG{
+    margin: 1vh 1vh 1vh 2vh;
+}
+
+#inputFile{
+    display: none;
+}
+
+#lblInputFile{
+    margin: 0vh 1vh 0.5vh 2vh;
+    border: 1px solid lightgray;
+    border-radius: 6px;
+    padding: 2.5px;
+    background-color: #50aaff;
+    text-align: center;
+}
+
+#lblInputFile:hover{
+    transform: scale(1.1);
+    background-color: #499be7;
+}
+
+#fotoDePerfil{
+    width: 150px;
+    height: 150px;
+    border-radius: 100%;
+    border: 1px solid black;
+    transform: translate(-50%,-50%);
+}
+
+#dados{
+    display: grid;
+    font-family: 'Source Sans Pro', sans-serif;
+    align-items: center;
+    top:50%;
+    margin-left: 8vh;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+}
+
+p{
+    top:50%;
+}

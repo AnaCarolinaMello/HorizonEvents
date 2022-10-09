@@ -1,0 +1,46 @@
+
+<form autocomplete="off"><input type="text" name="q" id="q" onKeyUp="showResults(this.value)" />
+<div id="result"></div>
+</form>
+
+<script>
+     const mysql = require("mysql");
+    const express = require('express');
+    const app = express()
+    var con = mysql.createConnection({
+        host: "localhost",
+        user: "root",
+        password: "",
+        database: "HorizonEvents"
+    });
+    let autocomplete = "SELECT* FROM Usuario_Cliente"
+    var search_terms = 
+    con.query(autocomplete,(err,result)=>{
+        data = result
+        console.log(result)
+    })
+    console.log(data)
+
+function autocompleteMatch(input) {
+  if (input == '') {
+    return [];
+  }
+  var reg = new RegExp(input)
+  return search_terms.filter(function(term) {
+	  if (term.match(reg)) {
+  	  return term;
+	  }
+  });
+}
+
+function showResults(val) {
+  res = document.getElementById("result");
+  res.innerHTML = '';
+  let list = '';
+  let terms = autocompleteMatch(val);
+  for (i=0; i<terms.length; i++) {
+    list += '<li>' + terms[i] + '</li>';
+  }
+  res.innerHTML = '<ul>' + list + '</ul>';
+}
+</script>

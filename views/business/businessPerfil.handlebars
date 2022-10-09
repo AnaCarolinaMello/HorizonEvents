@@ -1,0 +1,94 @@
+<div id="navbar">
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">
+                <img src="../imgNative/logoBranca.jpg" width="30" height="30" class="d-inline-block align-top" alt="">
+                Horizon of events
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home <span class="sr-only"></span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Eventos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Pesquisar</a>
+                    </li>
+                </ul>
+                <div id="logout">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a href="/logout"><button class="nav-link" id="btnLogout">Logout</button></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+</div>
+</nav>
+</header>
+{{#if erros}}
+<div class="alert alert-danger">
+  <center>
+    {{#each erros}}
+    <label class="errosTexto">*{{texto}}</label>
+    {{else}}
+
+    {{/each}}
+</div>
+</center>
+{{/if}}
+
+<div id="flashMsg">
+    {{#if success_msg}}
+    <div class="alert alert-success">
+      <p>{{success_msg}}</p>
+    </div>
+    {{/if}}
+
+    {{#if error_msg}}
+    <div class="alert alert-danger">
+      <p>{{error_msg}}</p>
+    </div>
+    {{/if}}
+    {{#if warning_msg}}
+    <div class="alert alert-warning">
+      <p>{{warning_msg}}</p>
+    </div>
+    {{/if}}
+  </div>
+
+<main>
+    <div id="containerMain">
+        <div id="container">
+            <div id="foto">
+                <img src={{foto_perfil}} id="imagem">
+                <div id="submit">
+                    <form action="/upload/{{_id}}" method="post" enctype="multipart/form-data">
+                        <label for="inputFile" id="lblInputFile">Escolher imagem</label>
+                        <input id="inputFile" type="file" name="foto" accept="image/*">
+                        <input type="submit" value="Salvar imagem" id="confirmarIMG">
+                    </form>
+                </div>
+                <div>
+                </div>
+            </div>
+        <div id="dados">
+            <p>Nome fantasia: {{nome}}</p>
+            <p>Razão comercial: {{razao}}</p>
+            <p>Representante: {{representante}}</p>
+            <p>Rua: {{rua}}</p>
+            <p>Telefone</p>
+            <p>Email</p>
+        </div>
+        <div>
+            <button>Editar</button>
+        </div>
+        </div>
+    </div>
+</main>

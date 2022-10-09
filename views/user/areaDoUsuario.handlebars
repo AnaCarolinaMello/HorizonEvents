@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {{#each erros}}
     <div class="alert alert-danger"><p>{{texto}}</p></div>
 {{else}}
@@ -41,3 +42,190 @@
             </form>
         </div>
     </main>
+=======
+<div id="navbar">
+  <header>
+   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">
+        <img src="../imgNative/logoBranca.jpg" width="30" height="30" class="d-inline-block align-top" alt="">
+        Horizon of events
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home <span class="sr-only"></span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Eventos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Pesquisar</a>
+          </li>
+        </ul>
+        <div id="logout">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              {{!-- botÃ£o de logout --}}
+              <a href="/logout"><button class="nav-link" id="btnLogout">Logout</button></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      </div>
+    </nav>
+  </header>
+{{#if erros}}
+  <div class="alert alert-danger">
+    <center>
+      {{#each erros}}
+      <label class="errosTexto">*{{texto}}</label>
+      {{else}}
+
+      {{/each}}
+    </center>
+  </div>
+{{/if}}
+  <div id="flashMsg">
+    {{#if success_msg}}
+    <div class="alert alert-success">
+      <p>{{success_msg}}</p>
+    </div>
+    {{/if}}
+
+    {{#if error_msg}}
+    <div class="alert alert-danger">
+      <p>{{error_msg}}</p>
+    </div>
+    {{/if}}
+    {{#if warning_msg}}
+    <div class="alert alert-warning">
+      <p>{{warning_msg}}</p>
+    </div>
+    {{/if}}
+  </div>
+<div id="containerMain">
+  <div id="container">
+      <div id="foto">
+        <img src={{fotoPerfil}} id="imagem">
+        <div id="submit">
+          <form action="/user/upload/{{_id}}" method="post" enctype="multipart/form-data">
+            <label for="inputFile" id="lblInputFile">Escolher imagem</label>
+            <input id="inputFile" type="file" name="foto" accept="image/*">
+            <input type="submit" value="Salvar imagem" id="confirmarIMG">
+          </form>
+        </div>
+        <div>
+        </div>
+      </div>
+      <div id="dados">
+        <p id="username" name="username">{{usuario}}</p>
+        <p id="email" name="email">{{email}}</p>
+      </div>
+      <form action="/user/Edit" method="get" id="editar">
+        <label for="edit"><span class="material-icons" id="icon">edit</span></label>
+        <button id="edit"></button>
+      </form>
+    </div>
+    <div id="favoritos">
+      <div class="card">
+        <div class="card-body">
+          <img class="card-img-top" src="/img/catCafe4.jpg" alt="Imagem de capa do card">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <img class="card-img-top" src="/img/catCafe2.jpg" alt="Imagem de capa do card">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+    <div class="card">
+        <div class="card-body">
+          <img class="card-img-top" src="/img/catCafe.jpg" alt="Imagem de capa do card">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+    <div class="card">
+        <div class="card-body">
+          <img class="card-img-top" src="/img/catCafe3.jpg" alt="Imagem de capa do card">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <img class="card-img-top" src="/img/catCafe5.jpg" alt="Imagem de capa do card">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <img class="card-img-top" src="/img/catCafe6.jpg" alt="Imagem de capa do card">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+ <footer class="text-center text-white dark bg-dark">
+    <!-- Grid container -->
+    <div class="container pt-4">
+      <!-- Section: Social media -->
+      <section class="mb-4">
+        <!-- Facebook -->
+        <a class="navbar-brand float-left text-white" id="linkNav" href="#">
+          <img src="../imgNative/logoBranca.jpg" width="40" height="40" class="d-inline justify-content-start" alt="">
+          Horizon of events
+        </a>
+        <a class="btn btn-link btn-floating btn-lg text-white m-1" href="https://facebook.com/HorizonofEventsC" role="button"
+          data-mdb-ripple-color="dark"><i class="fab fa-facebook-f"></i></a>
+
+        <!-- Twitter -->
+        <a class="btn btn-link btn-floating btn-lg text-white m-1" href="https://twitter.com/HorizonEventsC" role="button"
+          data-mdb-ripple-color="dark"><i class="fab fa-twitter"></i></a>
+        <!-- Instagram -->
+        <a class="btn btn-link btn-floating btn-lg text-white m-1" href="https://www.instagram.com/horizonofeventsc/" role="button"
+          data-mdb-ripple-color="dark"><i class="fab fa-instagram"></i></a>
+
+        <!-- Linkedin -->
+        <a class="btn btn-link btn-floating btn-lg text-white m-1" href="https://www.linkedin.com/in/horizon-of-events-579bb7251/" role="button"
+          data-mdb-ripple-color="dark"><i class="fab fa-linkedin"></i></a>
+        <!-- Github -->
+        <a class="btn btn-link btn-floating btn-lg text-white m-1" href="https://github.com/HorizonofEvents" role="button"
+          data-mdb-ripple-color="dark"><i class="fab fa-github"></i></a>
+      </section>
+      <!-- Section: Social media -->
+    </div>
+    <!-- Grid container -->
+
+    <!-- Copyright -->
+
+    <!-- Copyright -->
+  </footer>
+>>>>>>> 4e72a74 (Ana)
