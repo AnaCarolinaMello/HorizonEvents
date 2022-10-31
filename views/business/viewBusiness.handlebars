@@ -18,7 +18,7 @@
                         <a class="nav-link" href="#">Eventos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Pesquisar</a>
+                        <a class="nav-link" href="/search">Pesquisar</a>
                     </li>
                 </ul>
                 <div id="logout">
@@ -47,21 +47,18 @@
 <div id="flashMsg">
     {{#if success_msg}}
     <div class="alert alert-success">
-        <p>{{success_msg}}</p>
-        <p class="btnClose">X</p>
+      <p>{{success_msg}}</p>
     </div>
     {{/if}}
 
     {{#if error_msg}}
     <div class="alert alert-danger">
-        <p>{{success_msg}}</p>
-        <p class="btnClose">X</p>
+      <p>{{error_msg}}</p>
     </div>
     {{/if}}
     {{#if warning_msg}}
     <div class="alert alert-warning">
-        <p>{{success_msg}}</p>
-        <p class="btnClose">X</p>
+      <p>{{warning_msg}}</p>
     </div>
     {{/if}}
   </div>
@@ -71,28 +68,39 @@
         <div id="container">
             <div id="foto">
                 <img src={{foto_perfil}} id="imagem">
-                <div id="submit">
-                    <form action="/upload/{{_id}}" method="post" enctype="multipart/form-data">
-                        <label for="inputFile" id="lblInputFile">Escolher imagem</label>
-                        <input id="inputFile" type="file" name="foto" accept="image/*">
-                        <input type="submit" value="Salvar imagem" id="confirmarIMG">
-                    </form>
+            </div>
+        
+            <div id="dados">
+                <div id="nomeEmpresa">
+                    <h1>{{nome}}</h2>
                 </div>
-                <div>
+                <div id="dadosSecundarios">
+                    <div id="divEndereco">
+                        <h3>Endereço</h3>
+                        <p>Rua: {{rua}}</p>
+                        <p>Numero: {{numero}}</p>
+                    </div>
+                    <div id="divContatos">
+                        <h3>Contato</h3>
+                        <p>{{email}}</p>
+                        <p>{{telefone}}</p>
+                    </div>
                 </div>
             </div>
-        <div id="dados">
-            <p>{{nome}}</p>
-            <p>{{razao}}</p>
-            <p>{{representante}}</p>
-            <p>{{rua}}</p>
-            <p>Telefone</p>
-            <p>Email</p>
-        </div>
-        <form action="/user/Edit" method="get" id="editar">
-            <label for="edit"><span class="material-icons" id="icon">edit</span></label>
-            <button id="edit"></button>
-        </form>
+        <div id="divFavoritar">
+            <form action="/business/ViewBusiness?business={{id}}" method="post"> 
+            {{#if salvar}}
+              <label for="btnSalvar" class="heartEmpty">
+                <span class="material-symbols-outlined" class="heartEmpty">favorite</span>
+              </label>
+            {{/if}}
+            {{#if salvo}}
+              <label for="btnSalvar" class="heartEmpty">
+                <span class="material-symbols-outline" class="heartEmpty">favorite</span>
+              </label>
+            {{/if}}
+            <button name={{id}} id="btnSalvar">aaa</button>
+          </form>
         </div>
     </div>
 </main>

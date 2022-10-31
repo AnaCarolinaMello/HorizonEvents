@@ -31,29 +31,36 @@ body{
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
-    width: 70%;
+    width: 50%;
     margin: 20px;
 }
 
 #cadastro{
     display: flex;
     flex-direction: column;
-    width: 70%;
+    width: 60%;
     margin: 0 auto;
     border: 1px solid black;
     border-radius: 6px;
-    padding: 10px;
+    padding: 10px 10px 10px 10px;
     background-color: rgb(255, 255, 255);
     margin-bottom: 1vh;
+    align-items: center;
 }
 
 #login{
-    width: 70%;
+    width: 60%;
     border: 1px solid black;
     padding: 10px 20px 10px 20px;
     border-radius: 6px;
     background-color: white;
     margin: 0 auto;    
+}
+
+.txtLogin{
+    align-self: center;
+    margin-bottom: 0rem;
+    text-align: center;
 }
 
 input{
@@ -62,17 +69,19 @@ input{
     margin-bottom: 4vh;
     /* width: 30%; */
 }
-
-
-#endereco input{
-    margin-right: 8%;
+input:focus{
+    outline: none;
 }
+
+/* #endereco input{
+    margin-right: 8%;
+} */
 #numero{
     width: 10%;
 }
 
 #nomeRua{
-    width: 45%;
+    width: 35%;
 }
 
 #cep{
@@ -83,7 +92,15 @@ input{
     width: 45%;
 }
 
-#dados input{
+#nomes{
+    width: 100%;
+}
+
+#cnpj{
+    width: 30%;
+}
+
+#senhas input{
     width: 45%;
 }
 

@@ -1,0 +1,125 @@
+body{
+    height: 100vh;
+    /* background: linear-gradient(to bottom right, #e7e6e6 4%, #c5c5c5 37%, #999999 100%);   */
+    background-image: linear-gradient(to right bottom, #ababae, #a7a8b3, #a1a4b8, #9aa2bd, #929fc2, #8c9cc7, #859acd, #7e97d2, #7a92d8, #778dde, #7788e3, #7882e7);    font-family: 'Source Sans Pro', sans-serif;
+    margin: 0;
+}
+
+#navbar{
+    justify-content: space-between;
+    width: 100%;
+    z-index: 1;
+}
+
+#navbarNavDropdown{
+    justify-content: space-between;
+}
+
+#footer{
+    width: 100%;
+    z-index: 1;  
+  }
+
+
+#btnLogout{
+
+    background:none;
+    border: none;
+
+}
+  
+#navmain{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;}
+
+
+#container{
+    margin-top: 10vh;
+    height: 100vh;
+    width: 100%;
+    z-index: 1;
+}
+
+.form .fa-search{
+    position: absolute;
+    top:20px;
+    left: 20px;
+    color: #9ca3af;
+    padding: 0 5px 0 5px;
+}
+.form .fa-microphone{
+    padding: 0 10px 0 10px;
+}
+
+.form span{
+    position: absolute;
+    right: 17px;
+    top: 13px;
+    padding: 2px;
+    border-left: 1px solid #d1d5db;
+
+}
+
+.left-pan{
+    padding-left: 7px;
+}
+
+.left-pan i{
+   padding-left: 10px;
+}
+
+.form-input{
+    height: 55px;
+    text-indent: 33px;
+    border-radius: 10px;
+}
+
+.form-input:focus{
+    box-shadow: none;
+    border:none;
+    outline: none;
+}
+
+#exibicao{
+    position: absolute;
+    display: grid;
+    border: 1px solid #000000;
+    border-radius: 6px;
+    width: 80%;
+    grid-template-columns: 1fr 2.7fr 0.1fr;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: #d4d3d3;
+}
+
+#img{
+    width:80%;
+    height: 20vh;
+}
+
+/* #btnSalvar{
+    display: none;
+} */
+
+/* #heartEmpty{
+    width: 50px;
+    height: 50px;
+}
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 48
+} */
+
+/* .material-symbols-outline {
+  font-variation-settings:
+  'FILL' 1,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 48
+} */

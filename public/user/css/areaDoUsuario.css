@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300&display=swap');
 
 
+
+
 body{
     height: 100vh;
     background: linear-gradient(to bottom right, #e7e6e6 4%, #c5c5c5 37%, #999999 100%);  
@@ -41,7 +43,6 @@ body{
 
   #container{
     margin: 2vh auto auto auto;
-
     width: 90%;
     background-color: white;
     display: grid;
@@ -104,7 +105,6 @@ body{
     font-family: 'Source Sans Pro', sans-serif;
     align-items: center;
     top:50%;
-    margin-left: 8vh;
     grid-template-rows: auto;
 }
 
@@ -122,12 +122,15 @@ p{
 }
 
 #editar{
-    margin-left: 4vh;
+    display: flex;
+    justify-content: center;
 }
 
 #editIcon{
     font-size: 1.5em;
     margin-top: 2px;
+    display: flex;
+    justify-content: center;
 }
 
 #icon{
@@ -150,7 +153,6 @@ p{
 #btnLogout{
     background:none;
     border: none;
-    
 }
 
 #navmain{
@@ -160,6 +162,17 @@ p{
     justify-content: space-between;
 }
 
+.alert{
+ display: flex;   
+ flex-direction: row;
+ justify-content: space-between ;
+}
+
+
+.btnClose:hover{
+    cursor: pointer;
+}
+
 @media screen and (max-width:992px) {
     #container{
         top: 50%;
@@ -167,12 +180,15 @@ p{
 }
 
 @media screen and (max-width:600px) {
-    #dados{
-        margin-left: 1vh;
-    }
+    #favoritos{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
 
-    #container{
-        top: 50%;
-        grid-template-columns: 1fr 1fr 1fr;
-    }
+      #container{
+        display: grid;
+        grid-template-columns: 1fr 3fr 0.5fr;
+        grid-template-rows: auto;
+     }
 }

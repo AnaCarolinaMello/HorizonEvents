@@ -63,7 +63,7 @@
             <a class="nav-link" href="#">Eventos</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Pesquisar</a>
+            <a class="nav-link" href="/search">Pesquisar</a>
           </li>
         </ul>
         <div id="logout">
@@ -93,17 +93,20 @@
     {{#if success_msg}}
     <div class="alert alert-success">
       <p>{{success_msg}}</p>
+      <p class="btnClose">X</p>
     </div>
     {{/if}}
 
     {{#if error_msg}}
     <div class="alert alert-danger">
       <p>{{error_msg}}</p>
+      <p class="btnClose">X</p>
     </div>
     {{/if}}
     {{#if warning_msg}}
     <div class="alert alert-warning">
       <p>{{warning_msg}}</p>
+      <p class="btnClose">X</p>
     </div>
     {{/if}}
   </div>
@@ -131,67 +134,23 @@
       </form>
     </div>
     <div id="favoritos">
-      <div class="card">
-        <div class="card-body">
-          <img class="card-img-top" src="/img/catCafe4.jpg" alt="Imagem de capa do card">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-body">
-          <img class="card-img-top" src="/img/catCafe2.jpg" alt="Imagem de capa do card">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-      </div>
-    <div class="card">
-        <div class="card-body">
-          <img class="card-img-top" src="/img/catCafe.jpg" alt="Imagem de capa do card">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-      </div>
-    <div class="card">
-        <div class="card-body">
-          <img class="card-img-top" src="/img/catCafe3.jpg" alt="Imagem de capa do card">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-body">
-          <img class="card-img-top" src="/img/catCafe5.jpg" alt="Imagem de capa do card">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-body">
-          <img class="card-img-top" src="/img/catCafe6.jpg" alt="Imagem de capa do card">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-      </div>
+      {{#if dados}}
+        {{#each dados}}
+            <div class="card">
+              <div class="card-body">
+                <img class="card-img-top" src={{foto}} alt="Imagem de capa do card">
+                <h5 class="card-title">{{nome}}</h5>
+                <p class="card-text">{{rua}}, {{numero}}</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+        {{else}}
+
+        {{/each}}
+        
+      {{/if}}
     </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
 
  <footer class="text-center text-white dark bg-dark">
     <!-- Grid container -->

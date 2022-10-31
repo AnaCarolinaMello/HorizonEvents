@@ -1,46 +1,147 @@
+<header>
+  <div id="navbar">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">
+        <img src="../imgNative/logoBranca.jpg" width="30" height="30" class="d-inline-block align-top" alt="">
+        Horizon of events
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home <span class="sr-only"></span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Eventos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/search">Pesquisar</a>
+          </li>
+        </ul>
+        <div id="logout">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              {{!-- botÃ£o de logout --}}
+              <a href="/logout"><button class="nav-link" id="btnLogout">Logout</button></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+  </div>
+  </nav>
+</header>
+ <div id="flashMsg">
+    {{#if success_msg}}
+    <div class="alert alert-success">
+      <p>{{success_msg}}</p>
+      <p class="btnClose">X</p>
+    </div>
+    {{/if}}
 
-<form autocomplete="off"><input type="text" name="q" id="q" onKeyUp="showResults(this.value)" />
-<div id="result"></div>
-</form>
+    {{#if error_msg}}
+    <div class="alert alert-danger">
+      <p>{{error_msg}}</p>
+      <p class="btnClose">X</p>
+    </div>
+    {{/if}}
+    {{#if warning_msg}}
+    <div class="alert alert-warning">
+      <p>{{warning_msg}}</p>
+      <p class="btnClose">X</p>
+    </div>
+    {{/if}}
+  </div>
+<main>
+  <div id="container">
+    <div class="row height d-flex justify-content-center align-items-center" id="searchBar">
+      <div class="col-md-6">
+        <div class="form">
+          <i class="fa fa-search"></i>
+          <form action="/search" method="get">
+            <input type="text" class="form-control form-input" name="search" id="q" onKeyUp="showResults(this.value)"
+              placeholder="Pesquise aqui..." />
+            <span class="left-pan"><i class="fa fa-microphone"></i></span>
+            <div id="result"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+    {{#each enviar}}
+    <a href="/business/viewBusiness?business={{id}}">aaaaaaaaaaaaaaa</a>
+      <div id="exibicao">
+        <div>
+         <img src={{foto}} id="img">
+        </div>
+        <div id="dados">
+          <h3>{{nome}}</h3>
+          <label>{{rua}}, </label>
+          <label>{{numero}}</label>
+          <form action="/search" method="post"> 
+            {{!-- {{#if salvar}}
+              <label for="btnSalvar" class="heartEmpty">
+                <span class="material-symbols-outlined" class="heartEmpty">favorite</span>
+              </label>
+            {{/if}}
+            {{#if salvo}}
+              <label for="btnSalvar" class="heartEmpty">
+                <span class="material-symbols-outline" class="heartEmpty">favorite</span>
+              </label>
+            {{/if}} --}}
+            <button name={{id}} id="btnSalvar">aaa</button>
+          </form>
+        </div>
+      </a>
+  </div>
+    {{else}}
 
-<script>
-     const mysql = require("mysql");
-    const express = require('express');
-    const app = express()
-    var con = mysql.createConnection({
-        host: "localhost",
-        user: "root",
-        password: "",
-        database: "HorizonEvents"
-    });
-    let autocomplete = "SELECT* FROM Usuario_Cliente"
-    var search_terms = 
-    con.query(autocomplete,(err,result)=>{
-        data = result
-        console.log(result)
-    })
-    console.log(data)
+    {{/each}}
 
-function autocompleteMatch(input) {
-  if (input == '') {
-    return [];
-  }
-  var reg = new RegExp(input)
-  return search_terms.filter(function(term) {
-	  if (term.match(reg)) {
-  	  return term;
-	  }
-  });
-}
 
-function showResults(val) {
-  res = document.getElementById("result");
-  res.innerHTML = '';
-  let list = '';
-  let terms = autocompleteMatch(val);
-  for (i=0; i<terms.length; i++) {
-    list += '<li>' + terms[i] + '</li>';
-  }
-  res.innerHTML = '<ul>' + list + '</ul>';
-}
-</script>
+  
+  {{!-- <form autocomplete="off">
+    <div id="container">
+      <input type="text" name="q" id="q" onKeyUp="showResults(this.value)" />
+      <div id="result"></div>
+    </div>
+  </form> --}}
+</main>
+
+<footer class="text-center text-white dark bg-dark">
+  <!-- Grid container -->
+  <div class="container pt-4">
+    <!-- Section: Social media -->
+    <section class="mb-4">
+      <!-- Facebook -->
+      <a class="navbar-brand float-left text-white" id="linkNav" href="#">
+        <img src="../imgNative/logoBranca.jpg" width="40" height="40" class="d-inline justify-content-start" alt="">
+        Horizon of events
+      </a>
+      <a class="btn btn-link btn-floating btn-lg text-white m-1" href="https://facebook.com/HorizonofEventsC"
+        role="button" data-mdb-ripple-color="dark"><i class="fab fa-facebook-f"></i></a>
+
+      <!-- Twitter -->
+      <a class="btn btn-link btn-floating btn-lg text-white m-1" href="https://twitter.com/HorizonEventsC" role="button"
+        data-mdb-ripple-color="dark"><i class="fab fa-twitter"></i></a>
+      <!-- Instagram -->
+      <a class="btn btn-link btn-floating btn-lg text-white m-1" href="https://www.instagram.com/horizonofeventsc/"
+        role="button" data-mdb-ripple-color="dark"><i class="fab fa-instagram"></i></a>
+
+      <!-- Linkedin -->
+      <a class="btn btn-link btn-floating btn-lg text-white m-1"
+        href="https://www.linkedin.com/in/horizon-of-events-579bb7251/" role="button" data-mdb-ripple-color="dark"><i
+          class="fab fa-linkedin"></i></a>
+      <!-- Github -->
+      <a class="btn btn-link btn-floating btn-lg text-white m-1" href="https://github.com/HorizonofEvents" role="button"
+        data-mdb-ripple-color="dark"><i class="fab fa-github"></i></a>
+    </section>
+    <!-- Section: Social media -->
+  </div>
+  <!-- Grid container -->
+
+  <!-- Copyright -->
+
+  <!-- Copyright -->
+</footer>

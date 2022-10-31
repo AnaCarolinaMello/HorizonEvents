@@ -1,0 +1,14 @@
+{{#if erros}}
+<div class="alert alert-danger"><center>
+{{#each erros}}
+    <label class="errosTexto">*{{texto}}</label>
+{{else}}
+
+{{/each}}  
+</div></center>
+{{/if}}
+<form action="/business/Login" method="post">
+    <input name="CNPJ" type="tel" maxlength="18" id="cnpj" value={{cnpj_erro}}>
+    <input type="password" maxlength="32" name="senha">
+    <button>Login</button>
+</form>

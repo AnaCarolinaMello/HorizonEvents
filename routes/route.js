@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 const express = require('express');
 const route = express.Router()
@@ -72,6 +73,8 @@ route.get("/userLoginPerfil", (req,res)=>{
 module.exports = route
 =======
 
+=======
+>>>>>>> ab5f889 (New commit)
 const express = require('express');
 const route = express.Router()
 
@@ -109,5 +112,17 @@ route.get("/business/Signup", (req,res)=>{
     })
 })
 
+<<<<<<< HEAD
 module.exports = route
 >>>>>>> 4e72a74 (Ana)
+=======
+route.get('/business/Login',(req,res)=>{
+    res.render("business/businessLogin",{
+        title: "Login",
+        style: "businessLogin.css",
+        script: "businessLogin.js"
+    })
+})
+
+module.exports = route
+>>>>>>> ab5f889 (New commit)
