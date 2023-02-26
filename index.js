@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 const mysql = require("mysql");
 const express = require('express');
 const app = express()
@@ -1684,4 +1683,3 @@ app.post("/business/Login", async(req,res,next)=>{
     }
 });
 })
->>>>>>> ab5f889 (New commit)
